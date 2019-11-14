@@ -10,7 +10,7 @@ fi
 
 # User specific aliases and functions
 
-alias dusk='du -csh *| sort -rh | head -11 '
+alias dusk='du -ahd1| sort -rh | head -11 '
 alias vim='nvim'
 
 export EDITOR=nvim
