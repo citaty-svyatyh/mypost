@@ -73,7 +73,7 @@ filetype plugin on
 filetype plugin indent on
 " --- python-mode ---
 let g:pymode_python = 'python3'                           " По умолчанию python-mode использует проверку синтаксиса python 2. Чтобы включить python 3
-let g:python3_host_prog='/home/prosvet/env/bin/python3'              " Путь к вирт. окружению python
+let g:python3_host_prog='/usr/bin/python3'              " Путь к вирт. окружению python
 let g:pymode_lint_ignore=["E722", "C901"]                         " Игнорировать определенные линты
 
 
