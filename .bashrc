@@ -36,7 +36,7 @@ export HISTFILESIZE=10000
 
 # Мгновенно Сохранять Историю Команд.По умолчанию, если сессия внезапно обрывается, то теряется история команд
 PROMPT_COMMAND='history -a'
-PROMPT_COMMAND='$PROMPT_COMMAND; history -a'
+PROMPT_COMMAND="$PROMPT_COMMAND; history -a"
 
 # Игнорировать Определенные Команды
 export HISTIGNORE="ls:ps:history"
