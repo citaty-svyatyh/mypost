@@ -133,3 +133,5 @@ check_yes_no 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
 if check_yes_no 'virtualenv env'; then
         check_yes_no 'echo ". env/bin/activate" >> .bashrc '
 fi
+
+check_yes_no 'pip install autopep8'
