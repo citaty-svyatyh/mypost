@@ -8,7 +8,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'mitsuhiko/vim-jinja'
 " Plug 'Glench/Vim-Jinja2-Syntax'
-"Plug 'fisadev/vim-isort'  " pip install isort Может сортировать импорты в шапке
+Plug 'fisadev/vim-isort', {'do': 'pip install isort'} " pip install isort Может сортировать импорты в шапке. Just call the :Isort command, and it will reorder the imports of the current python file. Or select a block of imports with visual mode, and press Ctrl-i to sort them.
 
 " --- Perl ---
 Plug 'WolfgangMehner/perl-support'
