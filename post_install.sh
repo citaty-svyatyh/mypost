@@ -97,6 +97,9 @@ if [ `whoami` = root ]; then
         git clone https://github.com/1connect/nginx-config-formatter.git
         ln -s ~/nginx-config-formatter/nginxfmt.py /bin/nginxfmt.py
         chmod +x /bin/nginxfmt.py
+        
+        check_yes_no 'pip3 install autopep8'
+        check_yes_no 'pip3 install neovim'
 
 fi
 
