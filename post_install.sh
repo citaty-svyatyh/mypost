@@ -127,11 +127,14 @@ if check_yes_no 'echo "Add color to .bashrc?"'; then
         #exec bash # Не работает source  ~/.bashrc
 fi
 
-check_yes_no 'pip3 install neovim'
+
 check_yes_no 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 if check_yes_no 'virtualenv env'; then
         check_yes_no 'echo ". env/bin/activate" >> .bashrc '
+        check_yes_no '. env/bin/activate'
+        check_yes_no 'pip install autopep8'
+        check_yes_no 'pip install neovim'
 fi
 
-check_yes_no 'pip install autopep8'
+
