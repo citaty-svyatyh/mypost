@@ -100,6 +100,7 @@ if [ `whoami` = root ]; then
         
         check_yes_no 'pip3 install autopep8'
         check_yes_no 'pip3 install neovim'
+        check_yes_no 'pip install --upgrade setuptools pip && pip2 install neovim'
 
 fi
 
