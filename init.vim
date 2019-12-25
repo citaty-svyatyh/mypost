@@ -45,7 +45,22 @@ Plug 'challenger-deep-theme/vim'      " Тема вима
 Plug 'Chiel92/vim-autoformat'         " Форматирует все, но надо ставить модули, например для perl надо поставить perltidy. Кнопка форматирует, а потом сохраняет
 
 " --- Автодополнялки ---
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Работает для питона, чтобы заработало для js надо ставить npm и прочее
+"  Старая автодополнялка, но она не умеет дополнять, например ennumerate
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Работает для питона, чтобы заработало для js надо ставить npm и прочее
+
+" Новая понтовая автодополнялка. Чтобы ее поставить:
+" :checkhealth
+" :call coc#util#install()
+" :CocInstall coc-python
+" Дальше он запросит какой линтер использовать для питона.
+" Можно либо полностью отказаться, либо выбрать линтер, поставить
+" https://github.com/palantir/python-language-server
+" И настроить линтер под себя с помощью coc-settings.json  в той же папке, что и
+" init.vim а, так же  в файле ~/.pylintrc
+" Еще варианты настройки линтера:
+" https://jdhao.github.io/2018/09/20/disable_warning_neomake_pylint/
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " --- Навигация ---
 Plug 'majutsushi/tagbar'              " Показывает дерево классов и функций, можно очень быстро перемещаться кнопка F8
@@ -136,23 +151,6 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-"Поддержка js чтобы строилось дерево функций от majutsushi/TagbarToggle
-"let g:tagbar_type_javascript = {
-"            \ 'ctagstype': 'javascript',
-"            \ 'kinds': [
-"            \ 'A:arrays',
-"            \ 'P:properties',
-"            \ 'T:tags',
-"            \ 'O:objects',
-"            \ 'G:generator functions',
-"            \ 'F:functions',
-"            \ 'C:constructors/classes',
-"            \ 'M:methods',
-"            \ 'V:variables',
-"            \ 'I:imports',
-"            \ 'E:exports',
-"            \ 'S:styled components'
-"            \ ]}
 
 " Чтобы работало по <F8> навигация по перловому файлу
 let g:tagbar_type_perl = {
