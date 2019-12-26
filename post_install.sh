@@ -141,6 +141,8 @@ if check_yes_no 'virtualenv env'; then
         check_yes_no '. env/bin/activate'
         check_yes_no 'pip install autopep8'
         check_yes_no 'pip install neovim'
+        # Нужен для автодополнялки
+        check_yes_no 'pip install pynvim'
 fi
 
 
