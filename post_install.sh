@@ -74,6 +74,8 @@ if [ `whoami` = root ]; then
         check_yes_no 'yum -q -y install perl perltidy perl-Perl-Critic perl-Data-Dumper perl-App-cpanminus perl-DBD-MySQL'
         check_yes_no 'yum -q -y install npm'
         check_yes_no 'npm install -g jshint'
+        # Нужен, чтобы заработала автодополнялка js
+        check_yes_no 'npm install -g tern'
 
         #-------------------------------------------------------------------------------
         # VIM
