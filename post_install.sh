@@ -56,6 +56,7 @@ if [ `whoami` = root ]; then
         if check_yes_no 'yum -q -y install mariadb mariadb-server'; then
                 check_yes_no 'systemctl enable mariadb'
                 check_yes_no 'systemctl start mariadb'
+                check_yes_no 'yum -q -y install phpmyadmin'
         fi
 
         #-------------------------------------------------------------------------------
