@@ -7,6 +7,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " --- Python ---
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'mitsuhiko/vim-jinja'
+" Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'fisadev/vim-isort', {'do': 'pip install isort'} " pip install isort Может сортировать импорты в шапке. Just call the :Isort command, and it will reorder the imports of the current python file. Or select a block of imports with visual mode, and press Ctrl-i to sort them.
 
 " --- Perl ---
@@ -15,6 +16,7 @@ Plug 'WolfgangMehner/perl-support'
 " --- JavaScript ---
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/syntastic'           " Для проверки js синтаксиска надо поставить npm install -g jshint
+Plug 'ternjs/tern_for_vim', {'do': 'npm install'}   " Автодополнялка для js. Используй Ctrl+x и Ctrl+o
 
 " --- JSON ---
 Plug 'elzr/vim-json'
@@ -43,17 +45,10 @@ Plug 'challenger-deep-theme/vim'      " Тема вима
 Plug 'Chiel92/vim-autoformat'         " Форматирует все, но надо ставить модули, например для perl надо поставить perltidy. Кнопка форматирует, а потом сохраняет
 
 " --- Автодополнялки ---
-"  Здесь список всех поддерживаемых автодополнялкой языков:
-"  https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
-"  Для PHP, GO, TypeScript - смотри там же
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }     " Асинхронная автодополнялка, работает быстро в отличии от COC
-Plug 'deoplete-plugins/deoplete-jedi'                             " Подплагин для автодополнения python
-Plug 'carlitux/deoplete-ternjs'                                   " Подплагин для автодополнения javascript
-Plug 'ternjs/tern_for_vim', {'do': 'cd ~/.local/share/nvim/plugged/tern_for_vim && npm install'}
-" Необходима для carlitux/deoplete-ternjs. Надо зайти в папку ~/.local/share/nvim/plugged/tern_for_vim и там набрать npm install
-" И от рута npm install -g tern
+"  Старая автодополнялка, но она не умеет дополнять, например ennumerate
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Работает для питона, чтобы заработало для js надо ставить npm и прочее
 
-" COC -тормозная фигня
+" Новая понтовая автодополнялка. Чтобы ее поставить:
 " :checkhealth
 " :call coc#util#install()
 " :CocInstall coc-python
@@ -64,6 +59,8 @@ Plug 'ternjs/tern_for_vim', {'do': 'cd ~/.local/share/nvim/plugged/tern_for_vim 
 " init.vim а, так же  в файле ~/.pylintrc
 " Еще варианты настройки линтера:
 " https://jdhao.github.io/2018/09/20/disable_warning_neomake_pylint/
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " --- Навигация ---
 Plug 'majutsushi/tagbar'              " Показывает дерево классов и функций, можно очень быстро перемещаться кнопка F8
@@ -91,8 +88,8 @@ filetype plugin on
 filetype plugin indent on
 " --- python-mode ---
 let g:pymode_python = 'python3'                           " По умолчанию python-mode использует проверку синтаксиса python 2. Чтобы включить python 3
-let g:python3_host_prog='/usr/bin/python3'
-let g:pymode_lint_ignore=["E722", "C901"]                 " Игнорировать определенные линты
+let g:python3_host_prog='/usr/bin/python3'              " Путь к вирт. окружению python
+let g:pymode_lint_ignore=["E722", "C901"]                         " Игнорировать определенные линты
 
 
 " Цветовая те
@@ -153,6 +150,24 @@ nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
+
+"Поддержка js чтобы строилось дерево функций от majutsushi/TagbarToggle
+"let g:tagbar_type_javascript = {
+"            \ 'ctagstype': 'javascript',
+"            \ 'kinds': [
+"            \ 'A:arrays',
+"            \ 'P:properties',
+"            \ 'T:tags',
+"            \ 'O:objects',
+"            \ 'G:generator functions',
+"            \ 'F:functions',
+"            \ 'C:constructors/classes',
+"            \ 'M:methods',
+"            \ 'V:variables',
+"            \ 'I:imports',
+"            \ 'E:exports',
+"            \ 'S:styled components'
+"            \ ]}
 
 " Чтобы работало по <F8> навигация по перловому файлу
 let g:tagbar_type_perl = {
