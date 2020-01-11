@@ -148,4 +148,4 @@ if check_yes_no 'virtualenv env'; then
         check_yes_no 'pip install pynvim'
 fi
 
-
+check_yes_no 'echo "export MYCOLOR=24bit" >> .bash_profile'
