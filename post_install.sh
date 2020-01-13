@@ -73,6 +73,11 @@ if [ `whoami` = root ]; then
         check_yes_no 'yum -q -y groupinstall "Development Tools"'
         check_yes_no 'yum -q -y install python36u python36u-devel python36u-pip python-pip'
         check_yes_no 'yum -q -y install perl perltidy perl-Perl-Critic perl-Data-Dumper perl-App-cpanminus perl-DBD-MySQL'
+        
+        #-------------------------------------------------------------------------------
+        # Nodejs. Со временем и 12 версия ноды может устареть
+        #-------------------------------------------------------------------------------       
+        check_yes_no 'curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -'
         check_yes_no 'yum -q -y install npm'
         check_yes_no 'npm install -g jshint'
         # Нужен, чтобы заработала автодополнялка js
