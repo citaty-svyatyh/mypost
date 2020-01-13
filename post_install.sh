@@ -147,5 +147,5 @@ if check_yes_no 'virtualenv env'; then
         # Нужен для автодополнялки
         check_yes_no 'pip install pynvim'
 fi
-
+# vim если найдет переменню окружения MYCOLOR, то включит режим true color
 check_yes_no 'echo "export MYCOLOR=24bit" >> .bash_profile'
