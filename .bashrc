@@ -14,7 +14,7 @@ alias dusk='du -ahd1| sort -rh | head -11 '
 alias vim='nvim'
 
 export EDITOR=nvim
-export TERM=screen-256color
+#export TERM=screen-256color
 
 
 # Чтобы работал rsync при motd 
