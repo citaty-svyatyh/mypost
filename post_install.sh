@@ -84,7 +84,6 @@ if [ `whoami` = root ]; then
         check_yes_no 'npm install -g tern'
         # eslint как в атоме
         check_yes_no 'npm install -g eslint-config-equimper'
-        check_yes_no 'npm install -g eslint-config-prettier'
 
         #-------------------------------------------------------------------------------
         # VIM
