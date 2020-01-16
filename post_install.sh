@@ -79,9 +79,12 @@ if [ `whoami` = root ]; then
         #-------------------------------------------------------------------------------       
         check_yes_no 'curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -'
         check_yes_no 'yum -q -y install npm'
-        check_yes_no 'npm install -g jshint'
+        # check_yes_no 'npm install -g jshint'
         # Нужен, чтобы заработала автодополнялка js
         check_yes_no 'npm install -g tern'
+        # eslint как в атоме
+        check_yes_no 'npm install -g eslint-config-equimper'
+        check_yes_no 'npm install -g eslint-config-prettier'
 
         #-------------------------------------------------------------------------------
         # VIM
