@@ -156,3 +156,9 @@ if check_yes_no 'virtualenv env'; then
 fi
 # vim если найдет переменню окружения MYCOLOR, то включит режим true color
 check_yes_no 'echo "export MYCOLOR=24bit" >> .bash_profile'
+
+# Настройка глобального eslintera
+echo 'global eslint'
+check_yes_no 'npm init'
+check_yes_no 'eslint --init'
+
