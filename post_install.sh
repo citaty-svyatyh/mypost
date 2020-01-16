@@ -119,7 +119,9 @@ fi
 
 check_yes_no 'curl -s https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.bashrc -o ~/.bashrc'
 check_yes_no 'curl -s https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.ctags -o ~/.ctags'
-check_yes_no 'curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.jshintrc -o ~/.jshintrc'
+# Возможно jshint больше не нужен, на его смену пришел .eslintrc 
+# check_yes_no 'curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.jshintrc -o ~/.jshintrc'
+check_yes_no 'curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.eslintrc  -o ~/.eslintrc'
 check_yes_no 'curl -s https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.screenrc -o ~/.screenrc'
 check_yes_no 'curl -s https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.tern-project -o ~/.tern-project'
 check_yes_no 'curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.tmux.conf -o ~/.tmux.conf'
