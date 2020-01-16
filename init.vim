@@ -14,7 +14,7 @@ Plug 'WolfgangMehner/perl-support'
 
 " --- JavaScript ---
 Plug 'pangloss/vim-javascript'
-Plug 'scrooloose/syntastic'           " Для проверки js синтаксиска надо поставить npm install -g jshint
+"Plug 'scrooloose/syntastic'           " Для проверки js синтаксиска надо поставить npm install -g jshint
 
 " --- JSON ---
 Plug 'elzr/vim-json'
@@ -70,13 +70,17 @@ Plug 'majutsushi/tagbar'              " Показывает дерево кла
 Plug 'scrooloose/nerdtree'            " Дерево файлов. Для открытия файла в режиме таблицы юзай t, а для сплита s
 
 " --- Разное ---
-Plug 'vimlab/split-term.vim'          " Запуск баша из под вима
+"Plug 'vimlab/split-term.vim'          " Запуск баша из под вима
 Plug 'cohama/lexima.vim'              " Закрывает автоматом скобки
 Plug 'scrooloose/nerdcommenter'       " Комментирует блок \cc, снимает комменты с блока \cu
 Plug 'tpope/vim-surround'             " Обрамляет или снимает обрамление. Выдели слово, нажми S и набери <h1>
 Plug 'powerman/vim-plugin-ruscmd'     " Русская раскладка в командом режиме
 Plug 'chr4/nginx.vim'                 " nginx подсветка
 Plug 'sheerun/vim-polyglot'           " Подсветка синтаксиса для тьмы языко, в т.ч. и конфиги nginx
+Plug 'w0rp/ale'                                           " Нужен, чтобы заработал eslint, как в атоме
+" Для ale нужно поставить:
+" npm install -g eslint-config-equimper
+" npm install -g eslint-config-prettier
 
 call plug#end()
 
@@ -179,6 +183,12 @@ let g:tagbar_type_perl = {
 let g:tagbar_compact = 1
 " Отк. сортировка по имени у тагбара
 let g:tagbar_sort = 0
+
+" Конфиг ale + eslint
+let g:ale_fixers = { 'javascript': ['eslint'] }
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+let g:ale_fix_on_save = 1
 
 " Включаем номерацию строк
 set number
