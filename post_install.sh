@@ -162,6 +162,7 @@ check_yes_no 'echo "export MYCOLOR=24bit" >> .bash_profile'
 echo "Настройка глобального eslintera. Для react это не требуется! В react достаточно одной строки в package.json, которая есть по умолчанию"
 read -p "Нужно настроить глобальный eslinter (y/n)?" CONT
 if [ "$CONT" = "y" ]; then
+    check_yes_no 'npm init'
     check_yes_no 'npm install eslint --save-dev'
     check_yes_no 'npm install prettier --save-dev'
     check_yes_no 'npm install eslint-plugin-prettier --save-dev'
