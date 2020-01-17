@@ -1,0 +1,22 @@
+{
+        "plugins": ["prettier"],
+        "extends": ["prettier"],
+        "rules": {
+                "prettier/prettier": "error",
+                "strict": 0,
+                "arrow-body-style": 0,
+                "no-unused-expressions": ["error", { "allowTernary": true }],
+                "no-console": 0,
+                "react/jsx-uses-react": "error",
+                "react/jsx-uses-vars": "error",
+                "indent": ["error", 2],
+                "linebreak-style": ["error", "unix"],
+                "quotes": ["error", "single"],
+                "spaced-comment": 0,
+                "max-len": 0,
+                "camelcase": 0,
+                "comma-dangle": ["error", "always-multiline"],
+                "object-curly-spacing": 0,
+                "no-nested-ternary": 0
+        }
+}
