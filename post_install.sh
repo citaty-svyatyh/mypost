@@ -119,10 +119,12 @@ check_yes_no 'curl -s https://raw.githubusercontent.com/citaty-svyatyh/mypost/ma
 # Возможно jshint больше не нужен, на его смену пришел .eslintrc 
 # check_yes_no 'curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.jshintrc -o ~/.jshintrc'
 check_yes_no 'curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.eslintrc  -o ~/.eslintrc'
-check_yes_no 'curl -s https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.screenrc -o ~/.screenrc'
+#check_yes_no 'curl -s https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.screenrc -o ~/.screenrc'
 check_yes_no 'curl -s https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.tern-project -o ~/.tern-project'
 check_yes_no 'curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.tmux.conf -o ~/.tmux.conf'
 check_yes_no 'curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.pylintrc -o ~/.pylintrc'
+check_yes_no 'curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.prettierrc -o ~/.prettierrc'
+check_yes_no 'curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.eslintrc -o ~/.eslintrc'
 check_yes_no 'curl -fLo ~/.config/nvim/init.vim --create-dirs https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/init.vim'
 
 
