@@ -12,10 +12,3 @@ curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/post_ins
     "extends": "react-app"                                                                                                                                   
   },
 ```
-
-
-## JS 
-Растущая популярность Prettier, как средства форматирования кода, сделала часть стилей ESLint устаревшей, но данный линтер всё еще очень полезен для выявления ошибок в коде. 
-https://medium.com/@jimeno0/eslint-and-prettier-in-vim-neovim-7e45f85cf8f9
-
-
