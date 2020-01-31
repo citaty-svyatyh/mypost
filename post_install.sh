@@ -60,6 +60,19 @@ if [ `whoami` = root ]; then
         fi
 
         #-------------------------------------------------------------------------------
+        # MONGODB
+        #-------------------------------------------------------------------------------
+        if check_yes_no 'curl -s https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/mongodb-org-4.2.repo -o /etc/yum.repos.d/mongodb-org-4.2.repo'; then
+                check_yes_no 'yum install -q -y mongodb-org'
+                check_yes_no 'systemctl start mongod && systemctl enable mongod'
+                echo 'echo "never" > /sys/kernel/mm/transparent_hugepage/enabled' >> /etc/rc.local 
+                echo 'echo "never" > /sys/kernel/mm/transparent_hugepage/defrag' >> /etc/rc.local 
+                check_yes_no 'chmod +x /etc/rc.d/rc.local'
+                echo "Для отключения сообщения о мониторинге: db.disableFreeMonitoring()"
+        fi
+        
+        
+        #-------------------------------------------------------------------------------
         # FAIL2BAN
         #-------------------------------------------------------------------------------
         if check_yes_no 'yum -q -y install fail2ban'; then
