@@ -77,6 +77,7 @@ if [ `whoami` = root ]; then
         #-------------------------------------------------------------------------------
         # Nodejs. Со временем и 12 версия ноды может устареть
         #-------------------------------------------------------------------------------       
+        check_yes_no 'yum remove nodejs'
         check_yes_no 'curl -sL https://rpm.nodesource.com/setup_12.x | sudo -E bash -'
         check_yes_no 'yum -q -y install npm'
         # Нужен, чтобы заработала автодополнялка js
