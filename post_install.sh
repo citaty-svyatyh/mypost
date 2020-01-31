@@ -95,8 +95,7 @@ if [ `whoami` = root ]; then
         check_yes_no 'yum -q -y install npm'
         # Нужен, чтобы заработала автодополнялка js
         check_yes_no 'npm install -g tern'
-        # check_yes_no 'npm install -g eslint' ставится локально
-
+        check_yes_no 'npm install -g eslint'
 
         #-------------------------------------------------------------------------------
         # VIM
