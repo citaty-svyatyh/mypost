@@ -14,7 +14,7 @@ curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/post_ins
 ```
 
 ## JQUERY
-Надо добавить в .eslint.rc следующие строки
+Надо добавить в .eslintrc.js  следующие строки
 ```
 "env": {
   "browser": true,
@@ -23,3 +23,4 @@ curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/post_ins
   "jquery": true
 },
 ```
+И возможно, но не точно поставить: https://github.com/jquery/eslint-config-jquery
