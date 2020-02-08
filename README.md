@@ -12,3 +12,14 @@ curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/post_ins
     "extends": "react-app"                                                                                                                                   
   },
 ```
+
+## JQUERY
+Надо добавить в .eslint.rc следующие строки
+```
+"env": {
+  "browser": true,
+  "commonjs": true,
+  "es6": true,
+  "jquery": true
+},
+```
