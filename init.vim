@@ -1,47 +1,36 @@
 call plug#begin('~/.local/share/nvim/plugged')
-
 "-------------------------------------------------------------------------------
 " ПЛАГИНЫ
 "-------------------------------------------------------------------------------
-
 " --- Python ---
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'mitsuhiko/vim-jinja'
 Plug 'fisadev/vim-isort', {'do': 'pip install isort'} " pip install isort Может сортировать импорты в шапке. Just call the :Isort command, and it will reorder the imports of the current python file. Or select a block of imports with visual mode, and press Ctrl-i to sort them.
-
 " --- Perl ---
 Plug 'WolfgangMehner/perl-support'
-
 " --- JavaScript ---
 Plug 'pangloss/vim-javascript'
 "Plug 'scrooloose/syntastic'           " Для проверки js синтаксиска надо поставить npm install -g jshint
-
 " --- JSON ---
 Plug 'elzr/vim-json'
-
 " --- Bash ---
 Plug 'WolfgangMehner/bash-support'    " \rr - для запуска скрипта
-
 " --- HTML ---
 Plug 'othree/html5.vim'               " Поддержка microdata и прочей лабуды в html
 Plug 'idanarye/breeze.vim'            " Подсвечивает закрывающий и откры. тэг. Если, где-то что-то не закрыто, то не подсвечивает.
 Plug 'alvan/vim-closetag'             " Закрывает автоматом html и xml тэги. Пишешь <h1> и он автоматом закроется </h1>. Нажми >!
-
 " --- CSS ---
 Plug 'JulesWang/css.vim'              " CSS syntax file
 Plug 'groenewege/vim-less'            " Vim syntax for LESS (dynamic CSS)
 Plug 'hail2u/vim-css3-syntax'
 Plug 'ap/vim-css-color'
-
-
 " --- Оформление ---
 Plug 'vim-airline/vim-airline'        " Крутая строка состояния внизу экрана
-Plug 'itchyny/lightline.vim'          " Тема для крутой строки
+Plug 'vim-airline/vim-airline-themes'
+"Plug 'itchyny/lightline.vim'          " Тема для крутой строки
 Plug 'challenger-deep-theme/vim'      " Тема вима
-
 " --- Автоформатирование кода для всех языков ---
 Plug 'Chiel92/vim-autoformat'         " Форматирует все, но надо ставить модули, например для perl надо поставить perltidy.
-
 " --- Автодополнялки ---
 "  Здесь список всех поддерживаемых автодополнялкой языков:
 "  https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
@@ -52,7 +41,6 @@ Plug 'carlitux/deoplete-ternjs'                                   " Подпла
 Plug 'ternjs/tern_for_vim', {'do': 'cd ~/.local/share/nvim/plugged/tern_for_vim && npm install'}
 " Необходима для carlitux/deoplete-ternjs. Надо зайти в папку ~/.local/share/nvim/plugged/tern_for_vim и там набрать npm install
 " И от рута npm install -g tern
-
 " COC -тормозная фигня
 " :checkhealth
 " :call coc#util#install()
@@ -64,11 +52,9 @@ Plug 'ternjs/tern_for_vim', {'do': 'cd ~/.local/share/nvim/plugged/tern_for_vim 
 " init.vim а, так же  в файле ~/.pylintrc
 " Еще варианты настройки линтера:
 " https://jdhao.github.io/2018/09/20/disable_warning_neomake_pylint/
-
 " --- Навигация ---
 Plug 'majutsushi/tagbar'              " Показывает дерево классов и функций, можно очень быстро перемещаться кнопка F8
 Plug 'scrooloose/nerdtree'            " Дерево файлов. Для открытия файла в режиме таблицы юзай t, а для сплита s
-
 " --- Разное ---
 "Plug 'vimlab/split-term.vim'          " Запуск баша из под вима
 Plug 'cohama/lexima.vim'              " Закрывает автоматом скобки
@@ -78,12 +64,11 @@ Plug 'powerman/vim-plugin-ruscmd'     " Русская раскладка в к�
 Plug 'chr4/nginx.vim'                 " nginx подсветка
 Plug 'sheerun/vim-polyglot'           " Подсветка синтаксиса для тьмы языко, в т.ч. и конфиги nginx
 Plug 'w0rp/ale'                                           " Нужен, чтобы заработал eslint, как в атоме
+"Plug 'tpope/vim-repeat'               " Нужен, чтобы работала . для vim-surround
 " Для ale нужно поставить:
 " npm install -g eslint-config-equimper
 " npm install -g eslint-config-prettier
-
 call plug#end()
-
 "-------------------------------------------------------------------------------
 " НАСТРОЙКИ
 "-------------------------------------------------------------------------------
@@ -97,23 +82,30 @@ filetype plugin indent on
 let g:pymode_python = 'python3'                           " По умолчанию python-mode использует проверку синтаксиса python 2. Чтобы включить python 3
 let g:python3_host_prog='/usr/bin/python3'
 let g:pymode_lint_ignore=["E722", "C901"]                 " Игнорировать определенные линты
-
-
 " Цветовая тема и палитра 256 или 24бит цветов
 if ($MYCOLOR=='24bit')
         set termguicolors
 endif
-
 colorscheme challenger_deep
-
+" Тема для айрлайна и все остальное настройка tabline
+let g:airline_theme='papercolor'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#enabled = 1           " enable airline tabline
+let g:airline#extensions#tabline#tabs_label = ''       " can put text here like BUFFERS to denote buffers (I clear it so nothing is shown)
+let g:airline#extensions#tabline#buffers_label = ''    " can put text here like TABS to denote tabs (I clear it so nothing is shown)
+let g:airline#extensions#tabline#fnamemod = ':t'       " disable file paths in the tab
+let g:airline#extensions#tabline#show_tab_count = 0    " dont show tab numbers on the right
+let g:airline#extensions#tabline#show_buffers = 0      " dont show buffers in the tabline
+let g:airline#extensions#tabline#tab_min_count = 1     " minimum of 2 tabs needed to display the tabline
+let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline
+let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers
+let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird ornage arrow on the tabline
 " Нужно сделать, иначе Secrurecrt себя странно ведет. Вставляет везде символ q
 set guicursor=
 " Для питоновский скрипов автоматом вызывает Дерево функций и классов
 autocmd VimEnter *.py,*.pl,*.js,*.php TagbarToggle
-
 " Орфография для английского и русского языка
 set spelllang=en,ru
-
 " Два пробела при табуляции в качестве отступа для js/html/xml файлов, для
 " остальных 4
 set shiftwidth=4
@@ -121,47 +113,35 @@ set tabstop=4
 set softtabstop=4
 autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd BufRead,BufNewFile *.htm,*.html,*.xml,*.json,*.php,*.css,*.rss setlocal tabstop=2 shiftwidth=2 softtabstop=2
-
 " Автоматический перенос текста для текстовых файлов
 autocmd BufRead,BufNewFile *.txt  setlocal textwidth=80
-
 " С этой строкой отлично форматирует html файл, который содержит jinja2
 au BufNewFile,BufRead *.html set filetype=htmldjango
-
-
 autocmd BufRead,BufNewFile *.conf let b:autoformat_autoindent=0
-
 " Мышка работает в VIM. Но, чтобы скопировать на уровне SecureCRT, надо зажать
 " shift, перед выделением. И с зажатым shift вставлять.
 set mouse=a
-
 " Включаем автодополнялку при старте
 let g:deoplete#enable_at_startup = 1
-
 " Настройка vimlab/split-term.vim - окно с башем всегда справа
 " Открывает терминал с башем всегда внизу экрана. Команда :Term
 set splitright
 set splitbelow
-
 " Запоминает где nvim последний раз редактировал файл
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
 " Даже, если ща русская раскладка, все равно можно вводить любые команды типа
 " Ctrl + r и т.д.
 set keymap=russian-jcukenwin
 set iminsert=0  " Чтобы при старте ввод был на английском, а не русском (start > i)
 set imsearch=0  " Чтобы при старте поиск был на английском, а не русском (start > /)
 "set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
-
 " Типа "Нажимает" на ESC при быстром нажатии jj, чтобы не тянутся
 imap jj <Esc>
-
 " Отключаем стрелочки
 nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
-
 " Чтобы работало по <F8> навигация по перловому файлу
 let g:tagbar_type_perl = {
                         \ 'ctagstype' : 'perl',
@@ -183,29 +163,23 @@ let g:tagbar_type_perl = {
 let g:tagbar_compact = 1
 " Отк. сортировка по имени у тагбара
 let g:tagbar_sort = 0
-
 " Конфиг ale + eslint
 let g:ale_fixers = { 'javascript': ['eslint'] }
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
-
 " Включаем номерацию строк
 set number
 " Вкл. относительную нумерацию строк, напр. 10j или 5k
 set relativenumber
-
 " Показывать скрытые файлы и папки в NERDTree
 let NERDTreeShowHidden = 1
-
 " Курсор всегда в центре экрана
 set so=999
-
 " Подсветка строки, на которой находится курсор
 set cursorline
 set nostartofline
 hi CursorLine cterm=underline
-
 "-------------------------------------------------------------------------------
 " Горячие кнопки
 "-------------------------------------------------------------------------------
@@ -216,8 +190,8 @@ noremap <F3> :source ~/.config/nvim/init.vim<CR>
 " Открыть .config/nvim/init.vim через Shift + <F3>
 " Может не работать, если echo $TERM  xterm-256color
 noremap <S-F3> :tabedit ~/.config/nvim/init.vim<CR>
-" Запуск баша по F4
-noremap <F4> :Term<CR>
+" Удаление пустых строк
+noremap <F4> :g/^$/d<CR>:noh<CR>
 " Тогле включение и отклю. показа строк и обычных и релативных
 nnoremap  <silent> <F5> :exec &nu==&rnu? "se nu!" : "se rnu!"<cr>
 " Дерево файлов. Используй для открытия файлов t  и s  чтобы открывать в режиме таблицы или сплита
@@ -230,24 +204,18 @@ nnoremap <F8> :TagbarToggle<CR>
 " Проверка орфографии <F11> для русского и английского языка
 nnoremap <silent> <F11> :set spell!<cr>
 inoremap <silent> <F11> <C-O>:set spell!<cr>
-
 " CTRL-Z is Undo
 noremap <C-z> u
 inoremap <C-z> <C-O>u
-
 " CTRL-s сохранялка и автоформат
 inoremap <C-s> <esc>:Autoformat<CR>:w<CR>
 noremap <C-s> <esc>:Autoformat<CR>:w<CR>
-
 " Пролистнуть на страницу вниз (как в браузерах)
 nnoremap <Space> <PageDown> zz
-
 " Пролистнуть на страницу вверх
 nnoremap <C-Space> <PageUp> zz
-
 " Переключаемся между таблицами с помощью <Tab>
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
-
 " Запуск php скриптов с помощью \rr
 autocmd FileType php noremap \rr :w!<CR>:!/bin/php %<CR>
