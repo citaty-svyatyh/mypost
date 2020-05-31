@@ -26,7 +26,7 @@ if [ `whoami` = root ]; then
         # REPOs
         #-------------------------------------------------------------------------------
         check_yes_no 'yum install -q -y yum-utils'
-        check_yes_no 'yum -q -y install  https://centos7.iuscommunity.org/ius-release.rpm'
+        check_yes_no 'yum -q -y install  https://repo.ius.io/ius-release-el7.rpm'
         check_yes_no 'yum install -q -y epel-release'
         check_yes_no 'yum -q -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm'
 
