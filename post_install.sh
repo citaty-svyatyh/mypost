@@ -105,10 +105,10 @@ if [ `whoami` = root ]; then
         #-------------------------------------------------------------------------------
         # OTHERS
         #-------------------------------------------------------------------------------
+        check_yes_no 'yum -q -y install open-vm-tools'
         check_yes_no 'yum -q -y install wget'
         check_yes_no 'yum -q -y install nano'
         check_yes_no 'yum -q -y install rsync'
-        check_yes_no 'yum -q -y install screen'
         check_yes_no 'yum -q -y install mc'
         check_yes_no 'yum -q -y install tmux2'
         check_yes_no 'yum -q -y install mlocate && updatedb'
