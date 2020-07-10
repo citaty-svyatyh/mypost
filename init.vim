@@ -55,8 +55,8 @@ Plug 'ternjs/tern_for_vim', {'do': 'cd ~/.local/share/nvim/plugged/tern_for_vim 
 " --- Навигация ---
 Plug 'majutsushi/tagbar'              " Показывает дерево классов и функций, можно очень быстро перемещаться кнопка F8
 Plug 'scrooloose/nerdtree'            " Дерево файлов. Для открытия файла в режиме таблицы юзай t, а для сплита s
+Plug 'mileszs/ack.vim'                " Удобный grep по файлам
 " --- Разное ---
-"Plug 'vimlab/split-term.vim'          " Запуск баша из под вима
 Plug 'cohama/lexima.vim'              " Закрывает автоматом скобки
 Plug 'scrooloose/nerdcommenter'       " Комментирует блок \cc, снимает комменты с блока \cu
 Plug 'tpope/vim-surround'             " Обрамляет или снимает обрамление. Выдели слово, нажми S и набери <h1>
@@ -191,7 +191,9 @@ noremap <F3> :source ~/.config/nvim/init.vim<CR>
 " Может не работать, если echo $TERM  xterm-256color
 noremap <S-F3> :tabedit ~/.config/nvim/init.vim<CR>
 " Удаление пустых строк
-noremap <F4> :g/^$/d<CR>:noh<CR>
+" noremap <F4> :g/^$/d<CR>:noh<CR>
+" Поиск слова под курсором, воскл. знак, чтобы не было автооткрытия файла
+noremap <F4> :Ack! <cword> --ignore-dir=static<cr>
 " Тогле включение и отклю. показа строк и обычных и релативных
 nnoremap  <silent> <F5> :exec &nu==&rnu? "se nu!" : "se rnu!"<cr>
 " Дерево файлов. Используй для открытия файлов t  и s  чтобы открывать в режиме таблицы или сплита
