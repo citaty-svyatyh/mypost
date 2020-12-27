@@ -116,6 +116,8 @@ if [ `whoami` = root ]; then
         check_yes_no 'yum -q -y install lrzsz'
         check_yes_no 'yum -q -y install mailx'
         check_yes_no 'pip3 install virtualenv'
+        # Нужен для fzf vim и .gitignore ставит ag
+        check_yes_no 'yum install the_silver_searcher'
         # Красивый форматер для конфигов nginx
         git clone https://github.com/1connect/nginx-config-formatter.git
         ln -s ~/nginx-config-formatter/nginxfmt.py /bin/nginxfmt.py
