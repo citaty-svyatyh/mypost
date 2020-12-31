@@ -56,6 +56,9 @@ Plug 'ternjs/tern_for_vim', {'do': 'cd ~/.local/share/nvim/plugged/tern_for_vim 
 Plug 'majutsushi/tagbar'              " Показывает дерево классов и функций, можно очень быстро перемещаться кнопка F8
 Plug 'scrooloose/nerdtree'            " Дерево файлов. Для открытия файла в режиме таблицы юзай t, а для сплита s
 Plug 'mileszs/ack.vim'                " Удобный grep по файлам
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+"Plug 'ctrlpvim/ctrlp.vim'             " Навигация по файлам, но я юзаю для навигации для буферов и табов
 " --- Разное ---
 Plug 'cohama/lexima.vim'              " Закрывает автоматом скобки
 Plug 'scrooloose/nerdcommenter'       " Комментирует блок \cc, снимает комменты с блока \cu
@@ -63,7 +66,12 @@ Plug 'tpope/vim-surround'             " Обрамляет или снимает
 Plug 'powerman/vim-plugin-ruscmd'     " Русская раскладка в командом режиме
 Plug 'chr4/nginx.vim'                 " nginx подсветка
 Plug 'sheerun/vim-polyglot'           " Подсветка синтаксиса для тьмы языко, в т.ч. и конфиги nginx
-Plug 'w0rp/ale'                                           " Нужен, чтобы заработал eslint, как в атоме
+Plug 'w0rp/ale'                       " Нужен, чтобы заработал eslint, как в атоме
+Plug 'tpope/vim-unimpaired'           " ]p - вставить из буфера на строку выше, [p - ниже
+Plug 'google/vim-searchindex'         " Считает кол-во совпадений при поиске
+Plug 'tpope/vim-repeat'               " Может повторять через . vimsurround
+Plug 'mbbill/undotree'                " Дерево удалений, чтобы возвращаться
+"Plug 'junegunn/vim-peekaboo'          " Работа с буферами обмена, показывае окошко слева
 "Plug 'tpope/vim-repeat'               " Нужен, чтобы работала . для vim-surround
 " Для ale нужно поставить:
 " npm install -g eslint-config-equimper
@@ -100,6 +108,18 @@ let g:airline#extensions#tabline#tab_min_count = 1     " minimum of 2 tabs neede
 let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline
 let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers
 let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird ornage arrow on the tabline
+" Для fzf запускаем только поиск по буферам и табам, 999 - кол-во найденых
+"
+"
+" Для ctrlp запускаем только поиск по буферам и табам, 999 - кол-во найденых
+" результатов
+"let g:ctrlp_map = '<c-p>'
+"let g:ctrlp_cmd = 'CtrlPBuffer'
+"let g:ctrlp_match_window = 'min:4,max:999'
+"let g:ctrlp_custom_ignore = 'static'
+"let g:ctrlp_custom_ignore = {  'dir': 'static\|__pycache__\|files\|logs$'  }
+" fzf не будет открывать повторно буфер, если он уже открыт
+let g:fzf_buffers_jump = 1
 " Нужно сделать, иначе Secrurecrt себя странно ведет. Вставляет везде символ q
 set guicursor=
 " Для питоновский скрипов автоматом вызывает Дерево функций и классов
@@ -163,11 +183,17 @@ let g:tagbar_type_perl = {
 let g:tagbar_compact = 1
 " Отк. сортировка по имени у тагбара
 let g:tagbar_sort = 0
+
 " Конфиг ale + eslint
 let g:ale_fixers = { 'javascript': ['eslint'] }
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
 let g:ale_fix_on_save = 1
+" Запуск линтера, только при сохранении
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+
+
 " Включаем номерацию строк
 set number
 " Вкл. относительную нумерацию строк, напр. 10j или 5k
@@ -183,6 +209,10 @@ hi CursorLine cterm=underline
 "-------------------------------------------------------------------------------
 " Горячие кнопки
 "-------------------------------------------------------------------------------
+" По F1 очищаем последний поиск с подсветкой
+nnoremap <silent><F1> :noh<CR>
+" shift + F1 = удалить пустые строки
+nnoremap <S-F1> :g/^$/d<CR>
 " Используй F2 для временной вставки из буфера, чтобы отключить авто идент
 set pastetoggle=<F2>
 " Перечитать .vimrc / init
@@ -193,7 +223,7 @@ noremap <S-F3> :tabedit ~/.config/nvim/init.vim<CR>
 " Удаление пустых строк
 " noremap <F4> :g/^$/d<CR>:noh<CR>
 " Поиск слова под курсором, воскл. знак, чтобы не было автооткрытия файла
-noremap <F4> :Ack! <cword> --ignore-dir=static<cr>
+noremap <F4> :Ack! <cword> --ignore-dir={static,logs}<cr>
 " Тогле включение и отклю. показа строк и обычных и релативных
 nnoremap  <silent> <F5> :exec &nu==&rnu? "se nu!" : "se rnu!"<cr>
 " Дерево файлов. Используй для открытия файлов t  и s  чтобы открывать в режиме таблицы или сплита
@@ -221,3 +251,9 @@ nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 " Запуск php скриптов с помощью \rr
 autocmd FileType php noremap \rr :w!<CR>:!/bin/php %<CR>
+" Указываем откуда ctrp должен начать искать
+"noremap <C-a> :CtrlP :pwd<CR>
+" fzf
+" let FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+noremap <C-a> :Files<CR>
+noremap <C-p> :Buffers<CR>
