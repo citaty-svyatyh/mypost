@@ -181,4 +181,5 @@ if [ "$CONT" = "y" ]; then
     check_yes_no 'npm install eslint --save-dev'
     echo "choise 'To check syntax, find problems, and enforce code style'"
     check_yes_no 'eslint --init'
+    check_yes_no 'curl -s  https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/.eslintrc.js  -o ~/.eslintrc.js'
 fi
