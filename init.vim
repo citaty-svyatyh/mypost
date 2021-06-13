@@ -158,6 +158,7 @@ let g:fzf_buffers_jump = 1
 "let g:fzf_action = {  'enter': 'tab drop',  'ctrl-t': 'tab drop'}
 " Включаем автодополнялку при старте
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('num_processes', 4)
 " Чтобы работало по <F8> навигация по перловому файлу
 let g:tagbar_type_perl = {
                         \ 'ctagstype' : 'perl',
