@@ -98,7 +98,7 @@ if [ `whoami` = root ]; then
         #-------------------------------------------------------------------------------
         # VIM
         #-------------------------------------------------------------------------------
-        check_yes_no 'yum install -q -y neovim python3-neovim'
+        check_yes_no 'yum install -q -y  python3-neovim'
         check_yes_no 'npm install -g neovim'
         #-------------------------------------------------------------------------------
         # OTHERS
@@ -116,11 +116,6 @@ if [ `whoami` = root ]; then
         check_yes_no 'pip3.9 install virtualenv'
         # Нужен для fzf vim и .gitignore ставит ag
         check_yes_no 'yum  -q -y  install the_silver_searcher'
-        # Красивый форматер для конфигов nginx
-        git clone https://github.com/1connect/nginx-config-formatter.git
-        ln -s ~/nginx-config-formatter/nginxfmt.py /bin/nginxfmt.py
-        chmod +x /bin/nginxfmt.py
-        
         check_yes_no 'pip3.9 install autopep8'
         check_yes_no 'pip3.9 install neovim'
 
