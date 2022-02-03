@@ -89,12 +89,9 @@ if [ `whoami` = root ]; then
         check_yes_no 'yum -q -y groupinstall "Development Tools"'
         
         #-------------------------------------------------------------------------------
-        # Nodejs. Со временем и 12 версия ноды может устареть
+        # Nodejs
         #-------------------------------------------------------------------------------       
-        check_yes_no 'yum remove nodejs'
-        check_yes_no 'curl -sL https://rpm.nodesource.com/setup_14.x | sudo -E bash -'
-        check_yes_no 'yum -q -y install nodejs'
-        # Нужен, чтобы заработала автодополнялка js
+
         check_yes_no 'npm install -g tern'
         check_yes_no 'npm install -g eslint'
 
