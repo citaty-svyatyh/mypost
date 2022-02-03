@@ -65,7 +65,7 @@ if [ `whoami` = root ]; then
         #-------------------------------------------------------------------------------
         # MONGODB
         #-------------------------------------------------------------------------------
-        if check_yes_no 'curl -s https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/mongodb-org-4.4.repo -o /etc/yum.repos.d/mongodb-org-4.4.repo'; then
+        if check_yes_no 'curl -s https://raw.githubusercontent.com/citaty-svyatyh/mypost/master/mongodb-org-5.0.repo -o /etc/yum.repos.d/mongodb-org-5.0.repo'; then
                 check_yes_no 'yum install -q -y mongodb-org'
                 check_yes_no 'systemctl start mongod && systemctl enable mongod'
                 echo 'echo "never" > /sys/kernel/mm/transparent_hugepage/enabled' >> /etc/rc.local 
