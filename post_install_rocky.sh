@@ -91,7 +91,7 @@ if [ `whoami` = root ]; then
         #-------------------------------------------------------------------------------
         # Nodejs
         #-------------------------------------------------------------------------------       
-
+        echo 'Для установки последней ноды читай: https://www.tecmint.com/install-nodejs-on-rocky-linux/'
         check_yes_no 'npm install -g tern'
         check_yes_no 'npm install -g eslint'
 
