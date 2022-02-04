@@ -118,6 +118,8 @@ if [ `whoami` = root ]; then
         check_yes_no 'yum  -q -y  install the_silver_searcher'
         check_yes_no 'pip3.9 install autopep8'
         check_yes_no 'pip3.9 install neovim'
+        # Ненужный мусо
+        check_yes_no 'yum remove cockpit'
 
 fi
 
