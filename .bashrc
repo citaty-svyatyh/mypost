@@ -11,10 +11,8 @@ fi
 # User specific aliases and functions
 
 alias dusk='du -ahd1| sort -rh | head -11 '
-alias vim='nvim'
-
 export EDITOR=nvim
-#export TERM=screen-256color
+alias vim='TERM=screen-256color; nvim'
 
 
 # Чтобы работал rsync при motd 
@@ -57,3 +55,5 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 # Чтобы работал fzf и работало игнорирование .gitignore при поиске fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='ag -g ""'
+export PS1='\[\033[01;35m\]\u\[\033[01;36m\]@\[\033[01;33m\]\h \[\033[01;37m\]\w \[\033[01;32m\]$ \[\033[00m\]'
+. env/bin/activate
