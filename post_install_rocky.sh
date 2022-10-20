@@ -91,9 +91,11 @@ if [ `whoami` = root ]; then
         #-------------------------------------------------------------------------------
         # Nodejs
         #-------------------------------------------------------------------------------       
-        echo 'Для установки последней ноды читай: https://www.tecmint.com/install-nodejs-on-rocky-linux/'
+        echo 'Форматеры и линтеры, которые юзает nvim'
         check_yes_no 'npm install -g tern'
         check_yes_no 'npm install -g eslint'
+        echo 'Для js, html и json'
+        check_yes_no 'npm install -g js-beautify'
 
         #-------------------------------------------------------------------------------
         # VIM
